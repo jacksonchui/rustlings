@@ -7,11 +7,12 @@
 //
 // Execute `rustlings hint vecs1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 fn array_and_vec() -> ([i32; 4], Vec<i32>) {
     let a = [10, 20, 30, 40]; // a plain array
-    let v = // TODO: declare your vector here with the macro for vectors
+    // to_vec borrows self and creates a vec
+    let v = a.to_vec();
+    // let v = Vec::new; v.push(10); v.push(20); v.push(30); v.push(40);
+    // let v = vec![10, 20, 30, 40];
 
     (a, v)
 }
@@ -23,6 +24,7 @@ mod tests {
     #[test]
     fn test_array_and_vec_similarity() {
         let (a, v) = array_and_vec();
+        // Create a slice of the array, which is comparable
         assert_eq!(a, v[..]);
     }
 }
