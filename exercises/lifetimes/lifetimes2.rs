@@ -6,8 +6,6 @@
 // Execute `rustlings hint lifetimes2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
@@ -20,8 +18,11 @@ fn main() {
     let string1 = String::from("long string is long");
     let result;
     {
+        // option 1 ... move string, which we hold the borrowed
+        // ref in result in, to the outer block
         let string2 = String::from("xyz");
         result = longest(string1.as_str(), string2.as_str());
+        // option 2: println while result is in scope
+        println!("The longest string is '{}'", result);
     }
-    println!("The longest string is '{}'", result);
 }
